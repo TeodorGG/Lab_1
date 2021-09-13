@@ -142,3 +142,20 @@ body{
     padding-top: 150px;
     padding-bottom: 50px;
 }
+
+#img_author {
+
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+#bottom_bibliiografi {
+  padding-bottom: 50px;
+  margin-top: 50px;
+  color : #9b9b9b
+}
+
+#per_td {
+  color: white;
+}
+
