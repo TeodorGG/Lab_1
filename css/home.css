@@ -7,6 +7,19 @@ body{
     max-width: 950px;
     margin:0 auto;
   }
+
+
+input[type=checkbox] {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+label { 
+  display:none;
+  cursor: pointer;
+  user-select:none;
+}
   
   *,
   *:before,
@@ -64,9 +77,11 @@ body{
     margin: 0 8px;
     color: #fff;
     text-decoration: none;
-  
+    
     transition: color .3s linear;
   }
+
+  
   
   .nav__link:hover{
     color: #00e0d0;
@@ -159,3 +174,49 @@ body{
   color: white;
 }
 
+@media only screen and (max-width : 650px){
+  .logo__name {
+    padding-top: 20px;
+    margin-left: auto;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+  }
+
+  .intro__text {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  .nav {
+    margin-top: 20px;
+    margin-left: auto;
+    align-content: center;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header_bar{
+    display: contents;
+  }
+
+  .nav__link {
+    padding : 5px;
+  }
+
+  .pov_intro {
+    padding : 10px;
+  }
+
+ 
+
+}
+
+@media only screen and (max-width : 380px){
+  .image_right, .image_left, #img_author {
+    width: 100%;
+  }
+
+  
+}
