@@ -6,10 +6,19 @@
         </title>
 
         <link rel="stylesheet" href="./css/home.css">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+
     </head>
 
+    <script type = "text/javascript"  src="./js/alert_dialog.js"></script>
+
     <body>
+      
         <div class="head">
+          <div class = "dialog_box" onclick="this.style.display = 'none'">
+            <img  id = "img_dialog_box"/>
+          </div>
             <div class="container">
               <div class="header_bar">
                 <div class="logo__name">
@@ -32,18 +41,19 @@
       
               <div class="intro">
                 <div class = "pov_intro">
-                  <img class = "image_right" src="./img/images_1.jpeg" align="left"/>
+
+                  <img onclick="image(this.src);"  class = "image_right" src="./img/images_1.jpeg" align="left" id = "img_1"/>
                       <font size = '5' color = '#fff'><b>
                         <p>&emsp;&emsp;Odată, Păcală stătea la marginea unei păduri. Deodată vede o trăsură venind spre el. Repede se scoală, ia un trunchi mare de copac, şi-l ridică drept în sus. În trăsură era boierul, cucoana şi vizitiul, care mâna caii. Boierul, văzând pe Păcală, spuse vizitiului să oprească trăsura:</p>
                         
-                        <img class = "image_left" src="./img/images_2.jpeg" align="right"/>
+                        <img onclick="image(this.src);" class = "image_left" src="./img/images_2.jpeg" align="right"/>
                         <p><i>– Bună ziua!</i></p>
                         <p>&emsp;&emsp;Păcală răspunde:</p>
                         <p><i>– Mulţămim! </i></p>
                         <p><i>– Dar ce faci aici?</i></p>
                         <p><i>– D-apoi, cucoane, ia, am pus şi eu lemnul ista să se hodinească olecuţă, că apoi îl duc acasă. Da’ dumneavoastră unde vă duceţi?</i></p>
                         
-                        <img class = "image_right" src="./img/image_3.jpeg" align="left"/>
+                        <img onclick="image(this.src);" class = "image_right image" src="./img/image_3.jpeg" align="left"/>
         
                         <p><i>– Eu am auzit de unul Păcală, care păcăleşte oamenii, şi mă duc să-l găsesc, să mă păcălească şi pe mine.</i></p>
                         <p>&emsp;&emsp;Păcală îi zice boierului:</p>
@@ -52,7 +62,7 @@
         
                         <p>&emsp;&emsp;Când boierul ţinea cât putea trunchiul să nu se clatine, Păcală se sui în trăsură şi plecă. Se face noapte, şi Păcală nu mai vine. Stau aşa toată noaptea şi a doua zi după-amiaza.</p>
                         
-                        <img class = "image_left" src="./img/image_5.jpeg" align="right"/>
+                        <img onclick="image(this.src);" class = "image_left image" src="./img/image_5.jpeg" align="right"/>
                         <p>&emsp;&emsp;Numai ce trece un om.</p>
                         <p><i>– Bună ziua!</i> zice omul.</p>
                         <p><i>– Bună ziua!</i> îi răspunde boierul.</p>
@@ -69,5 +79,8 @@
               </div>
             </div>
           </div>
+
+          
     </body>
+
 </html>
