@@ -365,3 +365,7 @@ h6 {
     opacity: 1
   }
 }
+
+.more_info { 
+  display: none;
+}
