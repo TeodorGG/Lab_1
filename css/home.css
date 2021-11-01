@@ -33,7 +33,7 @@ label {
   
    /* header */
   .head{
-    background-image: linear-gradient(to right, rgba(9, 5, 47, .85) 0%, rgba(49, 29, 94, .85) 100%), url("../images/background/bk.jpg");
+    background-image: linear-gradient(to right, rgba(9, 5, 47, .85) 0%, rgba(49, 29, 94, .85) 100%);
     background-repeat: no-repeat;
   
     width: 100%;
@@ -176,7 +176,7 @@ label {
   color : #9b9b9b
 }
 
-#per_td {
+.per_td {
   color: white;
 }
 
