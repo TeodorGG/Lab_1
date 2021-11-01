@@ -146,6 +146,11 @@ label {
     color: white;
     border-color: white;
   }
+
+  .curent_link{
+    color: #00e0d0;
+
+  }
    
   .image_right{
     padding-right: 25px;
