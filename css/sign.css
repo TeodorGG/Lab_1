@@ -43,3 +43,8 @@ body {
 #succes_login {
     display: none;
 }
+
+.big_input {
+    min-height: 60px;
+    text-align: left;
+}

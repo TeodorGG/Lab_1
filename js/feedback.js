@@ -1,7 +1,7 @@
 
-async function login(){
-    var login = document.getElementById("login_input").value.trim();
-    var pasw = document.getElementById("pasw_input").value.trim();
+async function sendFeedback(){
+    var email = document.getElementById("email_input").value.trim();
+    var text = document.getElementById("text_input").value.trim();
    
 
     document.getElementById("s_i_1").innerHTML = "";
@@ -10,14 +10,14 @@ async function login(){
 
     var c = false;
 
-    if(login.length < 5){
+    if(!validateEmail(email)){
         c = true;
-        document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
+        document.getElementById("s_i_1").innerHTML = "Email-ul nu este valid";
     }
 
-    if(pasw.length < 6){
+    if(text.length < 40){
         c = true;
-        document.getElementById("s_i_2").innerHTML = "Parola este prea scurtă";
+        document.getElementById("s_i_2").innerHTML = "Text de prea scrut(min. 40 caractere)";
 
     }
 
@@ -27,8 +27,8 @@ async function login(){
 
 
     const data = new FormData();
-    data.append("login", login)
-    data.append('pasw', pasw)
+    data.append("email", email)
+    data.append('text', text)
     
     var request = new XMLHttpRequest();
 
@@ -47,22 +47,18 @@ async function login(){
                         document.getElementById("succes_login").style.display = "block";
 
                         setTimeout(function(){
-                            document.getElementById("login_input").value = "";
-                            document.getElementById("pasw_input").value = "";
+                            document.getElementById("email_input").value = "";
+                            document.getElementById("text_input").value = "";
                             window.open('./auth.html');
-                        }, 2000)
+                        }, 2000);
 
                     } else if (json.error_code === 1){
                         
                     } else if(json.error_code === 2){
-                        document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
+                        document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
                     } else if(json.error_code === 3){
-                        document.getElementById("s_i_3").innerHTML = "Parola este prea scurtă";
-                    } else if(json.error_code === 9){
-                        document.getElementById("s_i_1").innerHTML = "Loginul sau parola greșită";
+                        document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
                     } 
-                
-                
                     
                 } catch (e) {
 
@@ -72,10 +68,17 @@ async function login(){
             }
         };
 
-        request.open('POST', 'http://localhost:8888/Lab_3/php/login.php');
+        request.open('POST', 'http://localhost:8888/Lab_3/php/send_feedback.php');
         request.send(data);
 
 }
 
 
+
+
+
+function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
