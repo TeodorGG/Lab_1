@@ -1,0 +1,39 @@
+
+body {
+    background-image: linear-gradient(to right, rgba(9, 5, 47, .85) 0%, rgba(49, 29, 94, .85) 100%);
+    background-repeat: no-repeat;
+  
+    width: 100%;
+    min-height: 100vh;
+  
+    background-size: cover;}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+
+.input {
+    width: 240px;
+    height: 30px;
+    color: rgb(4, 12, 54);
+    background-color: white;
+    margin : 10px;
+    
+}
+
+.login_bt {
+    width: 120px;
+    height: 25px;
+
+}
+
+.span_error {
+    color : red;
+    font-size: 15px;
+}
+

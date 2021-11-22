@@ -1,0 +1,44 @@
+.title {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(235, 235, 235);
+    font-size: 120px;
+    margin-top: 20vh;
+}
+
+.welcome_text{
+    font-size: 60px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(235, 235, 235);
+    margin-top: 10vh;
+}
+
+body {
+    background-image: linear-gradient(to right, rgba(9, 5, 47, .85) 0%, rgba(49, 29, 94, .85) 100%);
+    background-repeat: no-repeat;
+  
+    width: 100%;
+    min-height: 100vh;
+  
+    background-size: cover;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+}
+
+#sign {
+    color: rgb(235, 235, 235);
+    text-decoration: none;
+    font-size: 25px;
+    margin: 20px;
+}
+
+.login_div{
+    margin-top: 50px;
+}
+
