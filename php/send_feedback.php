@@ -1,4 +1,9 @@
 <?php
+    // $login = $_POST["login"];
+    // // $email = $_POST["email"];
+    // // $pasw = $_POST["pasw"];
+    // // $res = $login + " | " + $email + " | " + $pasw;
+    // echo "ASDASD" + $login;
     
     if(isset($_POST))
 {

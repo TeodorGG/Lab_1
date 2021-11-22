@@ -17,8 +17,7 @@ async function sendFeedback(){
 
     if(text.length < 40){
         c = true;
-        document.getElementById("s_i_2").innerHTML = "Text de prea scrut(min. 40 caractere)";
-
+        document.getElementById("s_i_2").innerHTML = "Text estee prea scrut(min. 40 caractere)";
     }
 
     if(c){
@@ -32,44 +31,44 @@ async function sendFeedback(){
     
     var request = new XMLHttpRequest();
 
-        request.onreadystatechange = async (e) => {
-            if (request.readyState !== 4) {
-                return;
-            } 
-        
+    request.onreadystatechange = async (e) => {
+        if (request.readyState !== 4) {
+            return;
+        } 
+    
 
-            if (request.status === 200) {
-                //alert('tes ' + request.responseText)
-                try {
-                    var json = JSON.parse(request.responseText);
-                    if(json.error_code === 0){
-                       
-                        document.getElementById("succes_login").style.display = "block";
-
-                        setTimeout(function(){
-                            document.getElementById("email_input").value = "";
-                            document.getElementById("text_input").value = "";
-                            window.open('./auth.html');
-                        }, 2000);
-
-                    } else if (json.error_code === 1){
-                        
-                    } else if(json.error_code === 2){
-                        document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
-                    } else if(json.error_code === 3){
-                        document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
-                    } 
+        if (request.status === 200) {
+            //alert('tes ' + request.responseText)
+            try {
+                var json = JSON.parse(request.responseText);
+                if(json.error_code === 0){
                     
-                } catch (e) {
+                    document.getElementById("succes_login").style.display = "block";
+                    
+                    setTimeout(function(){
+                        document.getElementById("email_input").value = "";
+                        document.getElementById("text_input").value = "";
+                        window.open('./auth.html');
+                    }, 2000);
 
-                }
+                } else if(json.error_code === 1){
+                    
+                } else if(json.error_code === 2){
+                    document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
+                } else if(json.error_code === 3){
+                    document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
+                } 
+                
+            } catch (e) {
 
-            } else {
             }
-        };
 
-        request.open('POST', 'http://localhost:8888/Lab_3/php/send_feedback.php');
-        request.send(data);
+        } else {
+        }
+    };
+
+    request.open('POST', 'http://localhost:8888/Lab_3/php/send_feedback.php');
+    request.send(data);
 
 }
 
