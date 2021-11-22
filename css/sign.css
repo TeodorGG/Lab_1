@@ -37,3 +37,9 @@ body {
     font-size: 15px;
 }
 
+#text_succes_login {
+    color : green;
+}
+#succes_login {
+    display: none;
+}

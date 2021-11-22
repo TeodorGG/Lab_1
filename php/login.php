@@ -8,7 +8,6 @@
     if(isset($_POST))
 {
     $l = $_POST['login'];
-    $e = $_POST['email'];
     $p = $_POST['pasw'];
     
     $conn = mysqli_connect("localhost","root","root","kidan");
@@ -41,49 +40,24 @@
 
     }
 
-    if (!filter_var($e, FILTER_VALIDATE_EMAIL)) {
-        $res->error_code = 4;
-        $res = json_encode($res);
+   
 
-        echo $res;
-        return;
-    }
 
-    $sql_logins = "SELECT * FROM users WHERE login = '".$l."'";
-    if(mysqli_num_rows(mysqli_query($conn, $sql_logins)) != 0){
-        $res->error_code = 10;
-        $res = json_encode($res);
+    $sql_emails = "SELECT * FROM users WHERE pasw = '".$p."' AND login = '".$l."' ";
+    if(mysqli_num_rows(mysqli_query($conn, $sql_emails)) == 1){
+        $res->error_code = 0;
+       
+    } else {
+        $res->error_code = 9;
 
-        echo $res;
-        return;
     }
 
 
-    $sql_emails = "SELECT * FROM users WHERE email = '".$e."'";
-    if(mysqli_num_rows(mysqli_query($conn, $sql_emails)) != 0){
-        $res->error_code = 11;
-        $res = json_encode($res);
-
-        echo $res;
-        return;
-    }
-
-
-    $sql = "INSERT INTO `users`(`login`, `email`, `pasw`) VALUES ('".$l."', '".$e."', '".$p."')";
 
   
    
-    $rs = mysqli_query($conn, $sql);
 
 
-    if(!$rs)
-    {
-        $res->error_code = mysqli_error();
-    }
-    else
-    {
-        $res->error_code = 0;
-    }
     $res = json_encode($res);
 
     echo $res;

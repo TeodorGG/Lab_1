@@ -1,14 +1,12 @@
 
-async function register(){
+async function login(){
     var login = document.getElementById("login_input").value.trim();
-    var email = document.getElementById("email_input").value.trim();
     var pasw = document.getElementById("pasw_input").value.trim();
-    var pasw_2 = document.getElementById("pasw_2_input").value.trim();
+   
 
     document.getElementById("s_i_1").innerHTML = "";
     document.getElementById("s_i_2").innerHTML = "";
-    document.getElementById("s_i_3").innerHTML = "";
-    document.getElementById("s_i_4").innerHTML = "";
+   
 
     var c = false;
 
@@ -17,21 +15,9 @@ async function register(){
         document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
     }
 
-    if(!validateEmail(email)){
-        c = true;
-        document.getElementById("s_i_2").innerHTML = "Email-ul nu este valid";
-
-    }
-
     if(pasw.length < 6){
         c = true;
-        document.getElementById("s_i_3").innerHTML = "Parola este prea scurtă";
-
-    }
-
-    if(pasw !== pasw_2){
-        c = true;
-        document.getElementById("s_i_4").innerHTML = "Parolele nu sunt egale"
+        document.getElementById("s_i_2").innerHTML = "Parola este prea scurtă";
 
     }
 
@@ -42,7 +28,6 @@ async function register(){
 
     const data = new FormData();
     data.append("login", login)
-    data.append('email', email)
     data.append('pasw', pasw)
     
     var request = new XMLHttpRequest();
@@ -57,27 +42,25 @@ async function register(){
                 //alert('tes ' + request.responseText)
                 try {
                     var json = JSON.parse(request.responseText);
-                    console.log(json)
                     if(json.error_code === 0){
-                        document.getElementById("login_input").value = "";
-                        document.getElementById("email_input").value = "";
-                        document.getElementById("pasw_input").value = "";
-                        document.getElementById("pasw_2_input").value = "";
+                       
+                        document.getElementById("succes_login").style.display = "block";
 
-                        window.open('./sign_in.html');
+                        setTimeout(function(){
+                            document.getElementById("login_input").value = "";
+                            document.getElementById("pasw_input").value = "";
+                            window.open('./auth.html');
+                        }, 2000)
+
                     } else if (json.error_code === 1){
                         
                     } else if(json.error_code === 2){
                         document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
                     } else if(json.error_code === 3){
                         document.getElementById("s_i_3").innerHTML = "Parola este prea scurtă";
-                    } else if(json.error_code === 4){
-                        document.getElementById("s_i_2").innerHTML = "Email-ul nu este valid";
-                    } else if(json.error_code === 10){
-                        document.getElementById("s_i_1").innerHTML = "Loginul este utilizat deja de alt utilizator";
-                    } else if(json.error_code === 11){
-                        document.getElementById("s_i_2").innerHTML = "Email-ul este utilizat deja de alt utilizator";
-                    }
+                    } else if(json.error_code === 9){
+                        document.getElementById("s_i_1").innerHTML = "Loginul sau parola greșită";
+                    } 
                 
                 
                     
@@ -89,7 +72,7 @@ async function register(){
             }
         };
 
-        request.open('POST', 'http://localhost:8888/Lab_3/php/register.php');
+        request.open('POST', 'http://localhost:8888/Lab_3/php/login.php');
         request.send(data);
 
 }
