@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-
-
-
     <head>
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>Pacală și Boierul</title>
@@ -33,7 +30,7 @@
 </html>
 <?php
     
-    if(isset($_POST))
+if(isset($_POST))
 {
     $e = $_POST['email'];
     $t = $_POST['text'];
