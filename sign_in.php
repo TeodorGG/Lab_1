@@ -12,8 +12,15 @@ if(isset($_POST))
         
             if(strlen($p) > 6){
                 
-                sleep(3);   
-                header("location:./auth.html");
+                
+                $succes_message = "
+                                        <p id = 'text_succes_login'>
+                                            Logare cu succes
+                                        </p>
+                                        <script>setTimeout(() => { window.location.replace('./auth.php') }, 2000);</script>
+                                        ";
+                                    
+                
     
             } else {
                 $pasw_error = "<span  class = 'span_error' >Parola e prea scurta</span>";
@@ -47,11 +54,12 @@ else
             <div id = "succes_login">
                 <p id = "text_succes_login">
                     Vați logat cu succes!
-                </p>
+                </p> 
             </div>
-            
             <form method="POST" >
                 <div class = "form">
+                    <?php  echo $succes_message  ?>
+
                     <?php  echo $email_error  ?>
                     <?php echo '<input class = "input" name = "login"  placeholder = "login"  minlength = "5"    id = "login_input" value = "'.$_POST['login'].'" required/>'?>
                     <?php  echo $pasw_error  ?>
