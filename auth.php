@@ -25,7 +25,6 @@ if(isset($_POST))
                 <a id = "sign" href = "./sign_in.php">SignIn</a>
                 <a id = "sign" href = "./sign_up.php">SignUp</a>
                 <a id = "sign" href = "./send_feedback.php">Feedback</a>
-
             </div>
         </div>
     </body>
