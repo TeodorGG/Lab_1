@@ -1,10 +1,5 @@
 <?php
-    // $login = $_POST["login"];
-    // // $email = $_POST["email"];
-    // // $pasw = $_POST["pasw"];
-    // // $res = $login + " | " + $email + " | " + $pasw;
-    // echo "ASDASD" + $login;
-    
+   
     if(isset($_POST))
 {
     $e = $_POST['email'];
@@ -28,7 +23,6 @@
 
         echo $res;
         return;
-
     }
 
     if (!filter_var($e, FILTER_VALIDATE_EMAIL)) {
@@ -39,17 +33,11 @@
         return;
     }
 
-
-
     $sql = "INSERT INTO `feedback`(`email`, `text`) VALUES ('".$e."', '".$t."')";
 
-  
-   
     $rs = mysqli_query($conn, $sql);
 
-
-    if(!$rs)
-    {
+    if(!$rs){
         $res->error_code = mysqli_error();
     }
     else

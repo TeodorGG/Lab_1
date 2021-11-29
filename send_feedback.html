@@ -9,16 +9,21 @@
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>Pacală și Boierul</title>
         <link rel="stylesheet" href = "css/sign.css"/>
+
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
     </head>
     
 
     <body>
         <div class = "welcome">
                 <div class = "form">
-                   
-                   <input class = "input" placeholder = "Email" name = "email" type = "email"   id = "email_input" />
-                    <textarea class = "input big_input" placeholder = "Mesaj" name="text" id="text_input" rows="4" minlength = "40"  maxlength = "999" required></textarea>
-                    <button class = "login_bt" ></button>>
+                    <div  id = "_succes"></div>
+                    <span  class = 'span_error' id = "s_i_1"></span>
+                    <input class = "input" placeholder = "Email" name = "email" type = "email"   id = "email_input" />
+                    <span  class = 'span_error' id = "s_i_2"></span>
+                    <textarea class = "input big_input" placeholder = "Mesaj" name="text" id="text_input" rows="4"></textarea>
+                    <button onClick = "sendFeedback()" class = "login_bt" >Send feedback</button>
                 </div>
             </form>
         </div>

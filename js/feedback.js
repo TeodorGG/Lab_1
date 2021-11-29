@@ -3,7 +3,6 @@ async function sendFeedback(){
     var email = document.getElementById("email_input").value.trim();
     var text = document.getElementById("text_input").value.trim();
    
-
     document.getElementById("s_i_1").innerHTML = "";
     document.getElementById("s_i_2").innerHTML = "";
    
@@ -28,22 +27,18 @@ async function sendFeedback(){
     const data = new FormData();
     data.append("email", email)
     data.append('text', text)
-    
-    var request = new XMLHttpRequest();
 
-    request.onreadystatechange = async (e) => {
-        if (request.readyState !== 4) {
-            return;
-        } 
     
-
-        if (request.status === 200) {
-            //alert('tes ' + request.responseText)
-            try {
-                var json = JSON.parse(request.responseText);
+        $.post("http://localhost:8888/Lab_3/php/send_feedback.php",
+        {
+            email: email,
+            text: text
+        },
+        function(data, status){
+            var json = JSON.parse(data);
                 if(json.error_code === 0){
                     
-                    document.getElementById("succes_login").style.display = "block";
+                    document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Feedback trimis cu succes</p><script>setTimeout(() => { window.location.replace('./auth.php') }, 2000);</script>";
                     
                     setTimeout(function(){
                         document.getElementById("email_input").value = "";
@@ -52,29 +47,14 @@ async function sendFeedback(){
                     }, 2000);
 
                 } else if(json.error_code === 1){
-                    
+                    document.getElementById("s_i_1").innerHTML = "Errore de conexiune";
                 } else if(json.error_code === 2){
                     document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
                 } else if(json.error_code === 3){
                     document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
                 } 
-                
-            } catch (e) {
-
-            }
-
-        } else {
-        }
-    };
-
-    request.open('POST', 'http://localhost:8888/Lab_3/php/send_feedback.php');
-    request.send(data);
-
+        });
 }
-
-
-
-
 
 function validateEmail(email) {
     const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
