@@ -40,8 +40,6 @@
 
     }
 
-   
-
 
     $sql_emails = "SELECT * FROM users WHERE pasw = '".$p."' AND login = '".$l."' ";
     if(mysqli_num_rows(mysqli_query($conn, $sql_emails)) == 1){
@@ -51,12 +49,6 @@
         $res->error_code = 9;
 
     }
-
-
-
-  
-   
-
 
     $res = json_encode($res);
 
