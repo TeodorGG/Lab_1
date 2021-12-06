@@ -28,32 +28,62 @@ async function sendFeedback(){
     data.append("email", email)
     data.append('text', text)
 
-    
-        $.post("http://localhost:8888/Lab_3/php/send_feedback.php",
-        {
-            email: email,
-            text: text
-        },
-        function(data, status){
+    var body_data = {
+        email: email,
+        text: text
+    }
+    $.ajax({
+        type : 'POST',
+        url : 'http://localhost:8888/Lab_3/php/send_feedback.php',
+        data : body_data,
+        dataType : 'text',
+        success : function(data) {
             var json = JSON.parse(data);
-                if(json.error_code === 0){
-                    
-                    document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Feedback trimis cu succes</p><script>setTimeout(() => { window.location.replace('./auth.php') }, 2000);</script>";
-                    
-                    setTimeout(function(){
-                        document.getElementById("email_input").value = "";
-                        document.getElementById("text_input").value = "";
-                        window.open('./auth.html');
-                    }, 2000);
+            if(json.error_code === 0){
+                
+                document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Feedback trimis cu succes</p>";
+                
+                setTimeout(function(){
+                    document.getElementById("email_input").value = "";
+                    document.getElementById("text_input").value = "";
+                    window.location.replace('./auth.html');
+                }, 2000);
 
-                } else if(json.error_code === 1){
-                    document.getElementById("s_i_1").innerHTML = "Errore de conexiune";
-                } else if(json.error_code === 2){
-                    document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
-                } else if(json.error_code === 3){
-                    document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
-                } 
-        });
+            } else if(json.error_code === 1){
+                document.getElementById("s_i_1").innerHTML = "Errore de conexiune";
+            } else if(json.error_code === 2){
+                document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
+            } else if(json.error_code === 3){
+                document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
+            } 
+        }
+    });
+    
+        // $.post("http://localhost:8888/Lab_3/php/send_feedback.php",
+        // {
+        //     email: email,
+        //     text: text
+        // },
+        // function(data, status){
+        //     var json = JSON.parse(data);
+        //         if(json.error_code === 0){
+                    
+        //             document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Feedback trimis cu succes</p>";
+                    
+        //             setTimeout(function(){
+        //                 document.getElementById("email_input").value = "";
+        //                 document.getElementById("text_input").value = "";
+        //                 window.location.replace('./auth.html');
+        //             }, 2000);
+
+        //         } else if(json.error_code === 1){
+        //             document.getElementById("s_i_1").innerHTML = "Errore de conexiune";
+        //         } else if(json.error_code === 2){
+        //             document.getElementById("s_i_1").innerHTML = "Email-ul nu e valid";
+        //         } else if(json.error_code === 3){
+        //             document.getElementById("s_i_3").innerHTML = "Text de prea scrut(min. 40 caractere)";
+        //         } 
+        // });
 }
 
 function validateEmail(email) {

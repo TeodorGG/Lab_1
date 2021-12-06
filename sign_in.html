@@ -1,4 +1,4 @@
-
+<!-- 
 
 <?php
 if(isset($_POST)){
@@ -24,7 +24,7 @@ if(isset($_POST)){
     }
 }
 
-?>
+?> -->
 
 
 <!DOCTYPE html>
@@ -33,6 +33,8 @@ if(isset($_POST)){
         <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
         <title>Pacală și Boierul</title>
         <link rel="stylesheet" href = "css/sign.css"/>
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
     </head>
 
     <body>
@@ -42,19 +44,17 @@ if(isset($_POST)){
                     Vați logat cu succes!
                 </p> 
             </div>
-            <form method="POST" >
                 <div class = "form">
-                    <?php  echo $succes_message  ?>
+                    <div  id = "_succes"></div>
 
-                    <?php  echo $email_error  ?>
-                    <?php echo '<input class = "input" name = "login"  placeholder = "login"  minlength = "5"    id = "login_input" value = "'.$_POST['login'].'" required/>'?>
+                    <span  class = 'span_error' id = "s_i_1"></span>
+                    <input class = "input" name = "login"  placeholder = "login"  minlength = "5"    id = "login_input" />
                     
-                    <?php  echo $pasw_error  ?>
-                    <?php echo '<input class = "input" name = "pasw"  placeholder = "password"  minlength = "6"  id = "pasw_input" type="password"  required/>'?>
+                    <span  class = 'span_error' id = "s_i_2"></span>
+                    <input class = "input" name = "pasw"  placeholder = "password"  minlength = "6"  id = "pasw_input" type="password" />
 
-                    <input type="submit" class = "login_bt" />
+                    <button onClick = "login()" class = "login_bt" >Login</button>
                 </div>
-            </form>
         </div>
     </body>
     <script type="text/javascript" src="./js/login.js"></script>

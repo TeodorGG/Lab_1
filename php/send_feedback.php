@@ -4,6 +4,8 @@
 {
     $e = $_POST['email'];
     $t = $_POST['text'];
+
+ 
     
     $conn = mysqli_connect("localhost","root","root","kidan");
 
