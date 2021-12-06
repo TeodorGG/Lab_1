@@ -10,17 +10,6 @@
     $l = $_POST['login'];
     $e = $_POST['email'];
     $p = $_POST['pasw'];
-    
-    $conn = mysqli_connect("localhost","root","root","kidan");
-
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-        $res->error_code = 1;
-        $res = json_encode($res);
-
-        echo $res;
-        return;
-    }
 
     if(strlen($l) < 5){
         $res->error_code = 2;
@@ -48,6 +37,19 @@
         echo $res;
         return;
     }
+
+        
+    $conn = mysqli_connect("localhost","root","root","kidan");
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+        $res->error_code = 1;
+        $res = json_encode($res);
+
+        echo $res;
+        return;
+    }
+
 
     $sql_logins = "SELECT * FROM users WHERE login = '".$l."'";
     if(mysqli_num_rows(mysqli_query($conn, $sql_logins)) != 0){

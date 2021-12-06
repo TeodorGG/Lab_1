@@ -46,10 +46,9 @@
         $sql_ypdate_date = "UPDATE `users` SET `last_login_date` = NOW() WHERE pasw = '".$p."' AND login = '".$l."' ";
         mysqli_query($conn, $sql_ypdate_date);
         $res->error_code = 0;
-       
+    
     } else {
         $res->error_code = 9;
-
     }
 
     $res = json_encode($res);
