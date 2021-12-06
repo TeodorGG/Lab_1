@@ -40,58 +40,47 @@ async function register(){
     }
 
 
-    const data = new FormData();
-    data.append("login", login)
-    data.append('email', email)
-    data.append('pasw', pasw)
-    
-    var request = new XMLHttpRequest();
+    var body_data = {
+        login: login,
+        email: email,
+        pasw: pasw
 
-        request.onreadystatechange = async (e) => {
-            if (request.readyState !== 4) {
-                return;
-            } 
-        
+    }
 
-            if (request.status === 200) {
-                //alert('tes ' + request.responseText)
-                try {
-                    var json = JSON.parse(request.responseText);
-                    console.log(json)
-                    if(json.error_code === 0){
-                        document.getElementById("login_input").value = "";
-                        document.getElementById("email_input").value = "";
-                        document.getElementById("pasw_input").value = "";
-                        document.getElementById("pasw_2_input").value = "";
+    $.ajax({
+        type : 'POST',
+        url : 'http://localhost:8888/Lab_3/php/register.php',
+        data : body_data,
+        dataType : 'text',
+        success : function(data) {
+            var json = JSON.parse(data);
+            if(json.error_code === 0){
+                document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Înregistrare cu succes</p>";
 
-                        window.open('./sign_in.html');
-                    } else if (json.error_code === 1){
-                        
-                    } else if(json.error_code === 2){
-                        document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
-                    } else if(json.error_code === 3){
-                        document.getElementById("s_i_3").innerHTML = "Parola este prea scurtă";
-                    } else if(json.error_code === 4){
-                        document.getElementById("s_i_2").innerHTML = "Email-ul nu este valid";
-                    } else if(json.error_code === 10){
-                        document.getElementById("s_i_1").innerHTML = "Loginul este utilizat deja de alt utilizator";
-                    } else if(json.error_code === 11){
-                        document.getElementById("s_i_2").innerHTML = "Email-ul este utilizat deja de alt utilizator";
-                    }
+                document.getElementById("login_input").value = "";
+                document.getElementById("email_input").value = "";
+                document.getElementById("pasw_input").value = "";
+                document.getElementById("pasw_2_input").value = "";
+
+                setTimeout(function(){
+                    window.location.replace('./sign_in.html');
+                }, 1000);
+            } else if (json.error_code === 1){
                 
-                
-                    
-                } catch (e) {
-
-                }
-
-            } else {
+            } else if(json.error_code === 2){
+                document.getElementById("s_i_1").innerHTML = "Loginul e prea scurt";
+            } else if(json.error_code === 3){
+                document.getElementById("s_i_3").innerHTML = "Parola este prea scurtă";
+            } else if(json.error_code === 4){
+                document.getElementById("s_i_2").innerHTML = "Email-ul nu este valid";
+            } else if(json.error_code === 10){
+                document.getElementById("s_i_1").innerHTML = "Loginul este utilizat deja de alt utilizator";
+            } else if(json.error_code === 11){
+                document.getElementById("s_i_2").innerHTML = "Email-ul este utilizat deja de alt utilizator";
             }
-        };
-
-        request.open('POST', 'http://localhost:8888/Lab_3/php/register.php');
-        request.send(data);
-
+        
+        }
+    });
 }
 
 

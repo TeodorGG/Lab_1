@@ -43,6 +43,8 @@
 
     $sql_emails = "SELECT * FROM users WHERE pasw = '".$p."' AND login = '".$l."' ";
     if(mysqli_num_rows(mysqli_query($conn, $sql_emails)) == 1){
+        $sql_ypdate_date = "UPDATE `users` SET `last_login_date` = NOW() WHERE pasw = '".$p."' AND login = '".$l."' ";
+        mysqli_query($conn, $sql_ypdate_date);
         $res->error_code = 0;
        
     } else {

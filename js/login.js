@@ -40,7 +40,7 @@ async function login(){
             var json = JSON.parse(data);
             if(json.error_code === 0){
             
-                document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Feedback trimis cu succes</p>";
+                document.getElementById("_succes").innerHTML= "<p id = 'text_succes_login'> Logare cu succes</p>";
 
                 setTimeout(function(){
                     document.getElementById("login_input").value = "";
